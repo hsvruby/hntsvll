@@ -1,9 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-
-two:
-  first_name: MyString
-  last_name: MyString
+jane:
+  first_name: Jane
+  last_name: Plumber
+  email: jane@example.com
