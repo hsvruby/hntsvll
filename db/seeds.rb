@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+# Categories
+# https://metabahn.basecamphq.com/projects/6506794/todo_items/82974989/comments
+Category.create(:name => 'Designer')
+Category.create(:name => 'Developer')
+Category.create(:name => 'Blogger')
+Category.create(:name => 'Photographer')
+Category.create(:name => 'Musician')
+Category.create(:name => 'Artist')
+Category.create(:name => 'Other')
