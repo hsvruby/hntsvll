@@ -4,3 +4,4 @@ jane:
   first_name: Jane
   last_name: Plumber
   email: jane@example.com
+  categories: developer, blogger

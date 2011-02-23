@@ -13,4 +13,20 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   should have_and_belong_to_many(:categories)
+
+  should "require an account be associated with at least one category" do
+    jane = accounts(:jane)
+    jane.categories = []
+
+    refute jane.valid?
+    refute_nil jane.errors[:categories]
+  end
+
+  should "require that an account be associated with no more than two categories" do
+    jane = accounts(:jane)
+    jane.categories = [categories(:developer), categories(:designer), categories(:blogger)]
+
+    refute jane.valid?
+    refute_nil jane.errors[:categories]
+  end
 end

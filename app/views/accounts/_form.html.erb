@@ -5,7 +5,7 @@
     <%= f.input :email %>
   <% end %>
 
-  <%= f.input :categories, :as => :check_boxes, :collection => @categories %>
+  <%= f.input :categories, :as => :check_boxes, :collection => @categories, :required => true %>
 
   <%= f.buttons do %>
     <%= f.commit_button %>

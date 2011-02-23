@@ -1,7 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+developer:
+  name: Developer
 
-one:
-  name: MyString
+designer:
+  name: Designer
 
-two:
-  name: MyString
+blogger:
+  name: Blogger
