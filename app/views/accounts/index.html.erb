@@ -1,0 +1,15 @@
+<h1>Account Listing</h1>
+
+<p>
+  TODO: This page exists only to test backend functionality.  It should be made much prettier.
+</p>
+
+<p>
+  <%= link_to "Add Yourself!", new_account_path %>
+</p>
+
+<ul>
+  <% @accounts.each do |account| %>
+    <li><%= account.full_name %></li>
+  <% end %>
+</ul>

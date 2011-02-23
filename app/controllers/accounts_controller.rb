@@ -12,4 +12,9 @@ class AccountsController < ApplicationController
       format.html { render 'created_pending_confirmation' }
     end
   end
+
+  def index
+    @accounts = Account.all
+    respond_with @accounts
+  end
 end

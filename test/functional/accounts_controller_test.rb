@@ -22,4 +22,14 @@ class AccountsControllerTest < ActionController::TestCase
       should assign_to(:account)
     end
   end
+
+  context "GET #index" do
+    setup do
+      get :index
+    end
+
+    should respond_with(:success)
+    should render_template(:index)
+    should assign_to(:accounts)
+  end
 end
