@@ -11,3 +11,10 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+# Workaround for shoulda bug
+# https://github.com/thoughtbot/shoulda/issues/117
+unless defined?(Test::Unit::AssertionFailedError)
+  class Test::Unit::AssertionFailedError < ActiveSupport::TestCase::Assertion
+  end
+end
