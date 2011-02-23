@@ -32,4 +32,4 @@ Otherwise:
 
 === Hack
 
-Navigate to http://localhost:4000 in your favorite web browser
+Navigate to http://localhost:3000 in your favorite web browser
