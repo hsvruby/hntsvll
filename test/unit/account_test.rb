@@ -11,4 +11,6 @@ class AccountTest < ActiveSupport::TestCase
     jane = accounts(:jane)
     assert_equal "#{jane.first_name} #{jane.last_name}", jane.full_name
   end
+
+  should have_and_belong_to_many(:categories)
 end

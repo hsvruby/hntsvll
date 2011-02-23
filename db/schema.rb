@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223150552) do
+ActiveRecord::Schema.define(:version => 20110223151817) do
 
   create_table "accounts", :force => true do |t|
     t.string   "first_name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(:version => 20110223150552) do
     t.datetime "updated_at"
     t.string   "email"
   end
+
+  create_table "accounts_categories", :id => false, :force => true do |t|
+    t.integer "account_id"
+    t.integer "category_id"
+  end
+
+  add_index "accounts_categories", ["account_id", "category_id"], :name => "index_accounts_categories_on_account_id_and_category_id", :unique => true
 
   create_table "categories", :force => true do |t|
     t.string   "name"
