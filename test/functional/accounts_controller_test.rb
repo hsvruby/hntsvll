@@ -11,7 +11,7 @@ class AccountsControllerTest < ActionController::TestCase
     should assign_to(:account)
   end
 
-  context "GET #create" do
+  context "POST #create" do
     context "valid input" do
       setup do
         post :create, {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com'}
