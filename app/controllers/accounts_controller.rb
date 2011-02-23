@@ -7,9 +7,13 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.create(params[:account])
+    @account = Account.new(params[:account])
     respond_to do |format|
-      format.html { render 'created_pending_confirmation' }
+      if @account.save
+        format.html { render 'created_pending_confirmation' }
+      else
+        format.html { render 'new' }
+      end
     end
   end
 

@@ -14,11 +14,22 @@ class AccountsControllerTest < ActionController::TestCase
   context "POST #create" do
     context "valid input" do
       setup do
-        post :create, {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com'}
+        post :create, {:account => {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com'}}
       end
 
       should respond_with(:success)
       should render_template(:created_pending_confirmation)
+      should assign_to(:account)
+    end
+
+    context "invalid input" do
+      setup do
+        # First name missing
+        post :create, {:account => {:first_name => '', :last_name => 'Plumber', :email => 'joe@example.com'}}
+      end
+
+      should respond_with(:success)
+      should render_template(:new) # rerender new template showing errors
       should assign_to(:account)
     end
   end
