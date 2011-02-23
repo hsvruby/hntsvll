@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true
+  validates :page_url, :presence => true, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
 
   validate :has_at_least_one_category
   validate :has_no_more_than_two_categories
