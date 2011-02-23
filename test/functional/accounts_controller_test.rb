@@ -9,6 +9,7 @@ class AccountsControllerTest < ActionController::TestCase
     should respond_with(:success)
     should render_template(:new)
     should assign_to(:account)
+    should assign_to(:categories)
   end
 
   context "POST #create" do

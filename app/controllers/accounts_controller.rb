@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
+    @categories = Category.all
     respond_with @account
   end
 
