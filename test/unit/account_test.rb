@@ -7,6 +7,12 @@ class AccountTest < ActiveSupport::TestCase
   should validate_presence_of(:email)
   should validate_uniqueness_of(:email)
 
+
+  should validate_presence_of(:page_url)
+
+  should allow_value("http://google.com").for(:page_url)
+  should_not allow_value("ht://catsarecool").for(:page_url)
+
   should "return full_name as first_name + last_name" do
     jane = accounts(:jane)
     assert_equal "#{jane.first_name} #{jane.last_name}", jane.full_name
