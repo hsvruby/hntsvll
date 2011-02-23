@@ -6,18 +6,30 @@ TODO: Description of the project
 
 == Developer Setup
 
-1. Clone the repository
+=== Clone the repository
+
 If you are a hsv.rb developer:
   git clone git@github.com:hsvruby/hntsvll.git
 Otherwise:
   git clone git://github.com/hsvruby/hntsvll.git
-2. Install required gems
+
+=== Install required gems
+
   cd hntsvll
   bundle install
-3. Load the database schema
+
+=== Load the database schema
+
   rake db:schema:load
-4. Seed the database
+
+=== Seed the database
+
   rake db:seed
-5. Run the server
+
+=== Run the server
   rails server
-6. Navigate to http://localhost:4000/ in your favorite web browser
+
+
+=== Hack
+
+Navigate to http://localhost:4000 in your favorite web browser
