@@ -15,7 +15,7 @@ class AccountsControllerTest < ActionController::TestCase
   context "POST #create" do
     context "valid input" do
       setup do
-        post :create, {:account => {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com'}}
+        post :create, {:account => {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com', :category_ids => [Category.first.id]}}
       end
 
       should respond_with(:success)
