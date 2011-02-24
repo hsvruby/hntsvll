@@ -3,7 +3,7 @@ class AccountConfirmation < ActionMailer::Base
 
   def confirm_account(account)
     @account = account
-    @url = confirmation_url(:host => "hntsvll.com", :id => account.token)
+    @url = confirmation_url(:host => "hntsvll.com", :token => account.token)
     mail(:to => account.email, :subject => "Please confirm your hntsvll account.")
   end
 
