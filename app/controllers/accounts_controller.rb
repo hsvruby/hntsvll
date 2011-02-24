@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
   end
 
   def index
-    @accounts = Account.all
+    @accounts = Account.confirmed.all
     respond_with @accounts
   end
 end
