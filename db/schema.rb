@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223215240) do
+ActiveRecord::Schema.define(:version => 20110224051628) do
 
   create_table "accounts", :force => true do |t|
     t.string   "first_name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20110223215240) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "page_url"
+    t.string   "token"
+    t.datetime "token_expires_at"
   end
 
   create_table "accounts_categories", :id => false, :force => true do |t|

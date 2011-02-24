@@ -35,4 +35,11 @@ class AccountTest < ActiveSupport::TestCase
     refute jane.valid?
     refute_nil jane.errors[:categories]
   end
+
+  should "generate a token" do
+    jane = accounts(:jane)
+    jane.generate_token
+    assert_not_nil jane.token
+    assert_not_nil jane.token_expires_at
+  end
 end

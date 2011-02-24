@@ -7,10 +7,17 @@ class Account < ActiveRecord::Base
   validate :has_at_least_one_category
   validate :has_no_more_than_two_categories
 
+  before_create :generate_token
+
   has_and_belongs_to_many :categories
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def generate_token
+    self.token = Digest::SHA1.hexdigest(rand(36**32).to_s(36))
+    self.token_expires_at = Time.now + 2.hours
   end
 
   private
