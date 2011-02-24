@@ -21,11 +21,12 @@ end
 
 # Monkey patch refute for those who are on Ruby 1.8
 module Test::Unit::Assertions
-  def refute(test, msg = nil)
-    assert(!test, msg)
+  def refute(*args)
+    args[0] = !args[0]
+    assert(*args)
   end
 
-  def refute_nil(obj, msg = nil)
-    assert_not_nil(obj, msg)
+  def refute_nil(*args)
+    assert_not_nil(*args)
   end
 end
