@@ -5,7 +5,7 @@ gem 'sqlite3'
 
 gem 'formtastic'
 
-# Gems not needed in production
-group :development, :test do
+# Gems needed only for the test environment
+group :test do
   gem 'shoulda'
 end
