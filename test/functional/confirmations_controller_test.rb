@@ -1,9 +1,19 @@
 require 'test_helper'
 
 class ConfirmationsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+
+  context "GET #show" do
+    context "Valid key" do
+      setup do
+        @jane = accounts(:jane)
+        @jane.generate_token!
+        get :show, :token => @jane.token
+      end
+
+      should respond_with(:redirect)
+      should set_the_flash.to(/successfully/)
+    end
+
   end
 
 end
