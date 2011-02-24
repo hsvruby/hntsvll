@@ -46,16 +46,12 @@ class AccountTest < ActiveSupport::TestCase
   should "confirm an account" do
     jane = accounts(:jane)
     jane.generate_token
+    jane.save
     janes_token = jane.token
-    jane.confirm_by_token(janes_token)
+    Account.confirm_by_token(janes_token)
+    jane.reload
     assert jane.confirmed?
   end
 
-  should "add errors to an account with an invalid token" do
-    jane = accounts(:jane)
-    jane.generate_token
-    jane.confirm_by_token("invalidtoken")
-    refute jane.confirmed?
-  end
 
 end

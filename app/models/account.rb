@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true
@@ -7,9 +8,11 @@ class Account < ActiveRecord::Base
   validate :has_at_least_one_category
   validate :has_no_more_than_two_categories
 
-  before_create :generate_token
+  before_create :generate_token, :send_confirmation_mail
 
   has_and_belongs_to_many :categories
+
+  scope :confimed, where('accounts.confirmed_at IS NOT NULL')
 
   def full_name
     "#{first_name} #{last_name}"
@@ -20,16 +23,27 @@ class Account < ActiveRecord::Base
     self.token_expires_at = Time.now + 2.hours
   end
 
-  def confirm_by_token(token)
-    if token == self.token
-      self.confirmed_at = Time.now
-    else
-      errors[:email] << "confirmation token does not match."
-    end
+  def generate_token!
+    self.generate_token
+    self.save
+  end
+
+  def send_confirmation_mail
+    AccountConfirmation.confirm_account(self).deliver
   end
 
   def confirmed?
     !!self.confirmed_at
+  end
+
+  def expired?
+    self.token_expires_at.nil? || self.token_expires_at < Time.now
+  end
+
+  def confirm!
+    self.confirmed_at = Time.now
+    self.token_expires_at = Time.now + 2.hours
+    self.save
   end
 
   private
@@ -41,4 +55,18 @@ class Account < ActiveRecord::Base
   def has_no_more_than_two_categories
     errors[:categories] << "cannot choose more than two categories" if categories.length > 2
   end
+
+  class << self
+
+    def confirm_by_token(token)
+      if account = Account.find_by_token(token)
+        account.confirm!
+        return account
+      else
+        return false
+      end
+    end
+
+  end
+
 end
