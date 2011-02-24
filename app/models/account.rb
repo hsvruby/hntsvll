@@ -20,6 +20,18 @@ class Account < ActiveRecord::Base
     self.token_expires_at = Time.now + 2.hours
   end
 
+  def confirm_by_token(token)
+    if token == self.token
+      self.confirmed_at = Time.now
+    else
+      errors[:email] << "confirmation token does not match."
+    end
+  end
+
+  def confirmed?
+    !!self.confirmed_at
+  end
+
   private
 
   def has_at_least_one_category
