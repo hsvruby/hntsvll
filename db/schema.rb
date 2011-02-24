@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110224051628) do
     t.string   "page_url"
     t.string   "token"
     t.datetime "token_expires_at"
+    t.datetime "confirmed_at"
   end
 
   create_table "accounts_categories", :id => false, :force => true do |t|
