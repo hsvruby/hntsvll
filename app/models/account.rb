@@ -12,14 +12,14 @@ class Account < ActiveRecord::Base
 
   has_and_belongs_to_many :categories
 
-  scope :confimed, where('accounts.confirmed_at IS NOT NULL')
+  scope :confirmed, where('accounts.confirmed_at IS NOT NULL')
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest(rand(36**32).to_s(36))
+    self.token = Digest::SHA1.hexdigest(rand(36**32).to_s(36)) #quick & dirty psudo random token
     self.token_expires_at = Time.now + 2.hours
   end
 

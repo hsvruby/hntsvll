@@ -6,3 +6,12 @@ jane:
   email: jane@example.com
   page_url: "http://example.com"
   categories: developer, blogger
+
+
+oatmeal:
+  first_name: Captain
+  last_name: Oatmeal
+  email: captoatmeal@example.com
+  page_url: "http://example.com/oatmeal"
+  categories: blogger
+  confirmed_at: 2001-01-01 00:00:01

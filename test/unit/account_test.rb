@@ -53,5 +53,10 @@ class AccountTest < ActiveSupport::TestCase
     assert jane.confirmed?
   end
 
+  should "have confirmed accounts" do
+    assert Account.confirmed.all.include?(accounts(:oatmeal))
+    refute Account.confirmed.all.include?(accounts(:jane))
+  end
+
 
 end
