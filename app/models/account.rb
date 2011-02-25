@@ -43,6 +43,7 @@ class Account < ActiveRecord::Base
   def confirm!
     self.confirmed_at = Time.now
     self.token_expires_at = Time.now + 2.hours
+    self.token = nil
     self.save
   end
 
