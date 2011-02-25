@@ -21,13 +21,7 @@ class AccountsController < ApplicationController
   end
 
   def index
-    order_by = if session[:order_by] == 'random'
-                 session[:order_by_seed]
-               else
-                 session[:order_by]
-               end
-
-    @accounts = Account.confirmed.order(order_by)
+    @accounts = Account.confirmed.order(order_by_expression)
     respond_with @accounts
   end
 
@@ -36,11 +30,27 @@ class AccountsController < ApplicationController
   def set_order_by
     # Defaults
     session[:order_by] ||= 'random'
-    session[:order_by_seed] ||= rand
+    session[:order_by_seed] ||= rand(1000000)
 
     # Override by request
     if params[:order_by].present? && AccountsHelper::ORDER_BY_OPTIONS.has_value?(params[:order_by])
       session[:order_by] = params[:order_by]
+    end
+  end
+
+  def order_by_expression
+    if session[:order_by] == 'random'
+      # This is Postgres specific.  There is no analogous statement (as far as
+      # I can tell) in sqlite
+      begin
+        ActiveRecord::Base.connection.execute("SELECT setseed(%d)" % session[:order_by_seed])
+      rescue ActiveRecord::StatementInvalid
+        Rails.logger.warn("Could not set random seed.  Order will not be saved between requests.")
+      end
+
+      'RANDOM()'
+    else
+      session[:order_by]
     end
   end
 end
