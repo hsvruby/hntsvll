@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to Hntsvll</h1>
+    <h1>Welcome to Hntsvll, <%= @account.full_name %></h1>
     <p>You have successfully signed up for Hntsvll. To activate your account please use the following link.</p>
     <p><%= link_to @url, @url %></p>
     <p>The link will be valid for 2 hours.</p>

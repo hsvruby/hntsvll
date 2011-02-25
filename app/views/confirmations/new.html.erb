@@ -1,2 +1,8 @@
-<h1>Confirmations#new</h1>
-<p>Find me in app/views/confirmations/new.html.erb</p>
+<p>Please enter your email address and token to activate your account</p>
+<p>-or-</p>
+<p>Click on the link provided to you in your activation email</p>
+<%= form_tag(confirmation_path(:method => :get)) do %>
+  <%= text_field_tag :email, @email %><br />
+  <%= text_field_tag :token %>
+  <%= submit_tag "confirm" %>
+<% end %>
