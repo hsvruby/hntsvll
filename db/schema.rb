@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110224051628) do
+ActiveRecord::Schema.define(:version => 20110225033758) do
 
   create_table "accounts", :force => true do |t|
     t.string   "first_name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(:version => 20110224051628) do
     t.datetime "token_expires_at"
     t.datetime "confirmed_at"
   end
+
+  add_index "accounts", ["created_at"], :name => "index_accounts_on_created_at"
+  add_index "accounts", ["first_name"], :name => "index_accounts_on_first_name"
+  add_index "accounts", ["last_name"], :name => "index_accounts_on_last_name"
+  add_index "accounts", ["token"], :name => "index_accounts_on_token"
 
   create_table "accounts_categories", :id => false, :force => true do |t|
     t.integer "account_id"

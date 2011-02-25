@@ -8,8 +8,11 @@
   <%= link_to "Add Yourself!", new_account_path %>
 </p>
 
-<ul>
-  <% @accounts.each do |account| %>
-    <li><%= account.full_name %></li>
-  <% end %>
-</ul>
+<p>
+  Sort By:
+  <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
+</p>
+
+<div id="accounts_list">
+  <%= render 'accounts' %>
+</div>
