@@ -22,6 +22,10 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.confirmed.order(order_by_expression)
+    if params[:search].present?
+      @accounts = @accounts.search(params[:search])
+    end
+
     respond_with @accounts
   end
 

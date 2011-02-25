@@ -30,3 +30,10 @@ joe:
   page_url: "http://example.com/joe"
   categories: photographer
   confirmed_at: 2001-01-01 00:00:01
+
+harry:
+  first_name: Harry
+  last_name: Jibber
+  email: hjibber@example.com
+  page_url: "http://example.com/jibber"
+  categories: designer

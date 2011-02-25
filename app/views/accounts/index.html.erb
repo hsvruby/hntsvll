@@ -13,6 +13,11 @@
   <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
 </p>
 
+<p>
+  Search:
+  <%= text_field_tag :search, nil, :id => 'search_text_field' %>
+</p>
+
 <div id="accounts_list">
   <%= render 'accounts' %>
 </div>

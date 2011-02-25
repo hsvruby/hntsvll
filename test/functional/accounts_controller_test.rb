@@ -54,4 +54,14 @@ class AccountsControllerTest < ActionController::TestCase
       assert_equal Account.confirmed.order('last_name'), assigns(:accounts)
     end
   end
+
+  context "GET #index with search" do
+    setup do
+      get :index, { :search => 'Plumb' }
+    end
+
+    should "respond with accounts that match the search" do
+      assert_equal [accounts(:joe)], assigns(:accounts)
+    end
+  end
 end

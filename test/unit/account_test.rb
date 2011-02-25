@@ -58,5 +58,11 @@ class AccountTest < ActiveSupport::TestCase
     refute Account.confirmed.all.include?(accounts(:jane))
   end
 
+  should "search for first name and last name when given a term with a space" do
+    assert_equal [accounts(:jane)], Account.search('Jane Plumb')
+  end
 
+  should "search for first name or last name when given a term without a space" do
+    assert_equal [accounts(:harry), accounts(:jane), accounts(:joe)], Account.search('J').order('first_name')
+  end
 end
