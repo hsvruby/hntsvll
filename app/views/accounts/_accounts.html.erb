@@ -1,5 +1,5 @@
 <ul>
   <% @accounts.each do |account| %>
-    <li><%= account.full_name %></li>
+    <li><%= link_to account.full_name, account.page_url %></li>
   <% end %>
 </ul>
