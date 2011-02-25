@@ -8,10 +8,17 @@
   <%= link_to "Add Yourself!", new_account_path %>
 </p>
 
-<p>
-  Sort By:
-  <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
-</p>
+<%= form_tag accounts_path, :remote => true, :method => 'get', :"data-type" => 'script', :id => 'filter_form' do %>
+  <p>
+    Sort By:
+    <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
+  </p>
+
+  <p>
+    Search:
+    <%= text_field_tag :search, params[:search], :id => 'search_text_field' %>
+  </p>
+<% end %>
 
 <div id="accounts_list">
   <%= render 'accounts' %>
