@@ -43,14 +43,28 @@ class AccountTest < ActiveSupport::TestCase
     assert_not_nil jane.token_expires_at
   end
 
-  should "confirm an account" do
-    jane = accounts(:jane)
-    jane.generate_token
-    jane.save
-    janes_token = jane.token
-    Account.confirm_by_token(janes_token)
-    jane.reload
-    assert jane.confirmed?
+  context "validating accounts" do
+
+    should "confirm an account" do
+      jane = accounts(:jane)
+      jane.generate_token
+      jane.save
+      janes_token = jane.token
+      Account.confirm_by_token(janes_token)
+      jane.reload
+      assert jane.confirmed?
+    end
+
+    should "clear validation token after validated" do
+      jane = accounts(:jane)
+      jane.generate_token
+      jane.save
+      janes_token = jane.token
+      Account.confirm_by_token(janes_token)
+      jane.reload
+      refute jane.token
+    end
+
   end
 
   should "have confirmed accounts" do
