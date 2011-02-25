@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
-  respond_to :html
+  respond_to :html, :js
+
+  before_filter :set_order_by, :only => :index
 
   def new
     @account = Account.new
@@ -19,7 +21,26 @@ class AccountsController < ApplicationController
   end
 
   def index
-    @accounts = Account.confirmed.all
+    order_by = if session[:order_by] == 'random'
+                 session[:order_by_seed]
+               else
+                 session[:order_by]
+               end
+
+    @accounts = Account.confirmed.order(order_by)
     respond_with @accounts
+  end
+
+  private
+
+  def set_order_by
+    # Defaults
+    session[:order_by] ||= 'random'
+    session[:order_by_seed] ||= rand
+
+    # Override by request
+    if params[:order_by].present? && AccountsHelper::ORDER_BY_OPTIONS.has_value?(params[:order_by])
+      session[:order_by] = params[:order_by]
+    end
   end
 end

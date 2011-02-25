@@ -44,4 +44,14 @@ class AccountsControllerTest < ActionController::TestCase
     should render_template(:index)
     should assign_to(:accounts)
   end
+
+  context "GET #index with order_by last_name" do
+    setup do
+      get :index, { :order_by => 'last_name' }
+    end
+
+    should "respond with accounts sorted by last name" do
+      assert_equal Account.confirmed.order('last_name'), assigns(:accounts)
+    end
+  end
 end
