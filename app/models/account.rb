@@ -40,11 +40,8 @@ class Account < ActiveRecord::Base
     self.token_expires_at.nil? || self.token_expires_at < Time.now
   end
 
-  def confirm!
-    self.confirmed_at = Time.now
-    self.token_expires_at = Time.now + 2.hours
-    self.token = nil
-    self.save
+  def confirm_by_token(token)
+    (self.token == token) ? confirm! : false
   end
 
   private
@@ -57,17 +54,12 @@ class Account < ActiveRecord::Base
     errors[:categories] << "cannot choose more than two categories" if categories.length > 2
   end
 
-  class << self
-
-    def confirm_by_token(token)
-      if account = Account.find_by_token(token)
-        account.confirm!
-        return account
-      else
-        return false
-      end
-    end
-
+  def confirm!
+    self.confirmed_at = Time.now
+    self.token_expires_at = Time.now + 2.hours
+    self.token = nil
+    self.save
   end
+
 
 end
