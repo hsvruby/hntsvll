@@ -50,7 +50,7 @@ class AccountTest < ActiveSupport::TestCase
       jane.generate_token
       jane.save
       janes_token = jane.token
-      Account.confirm_by_token(janes_token)
+      jane.confirm_by_token(janes_token)
       jane.reload
       assert jane.confirmed?
     end
@@ -60,7 +60,7 @@ class AccountTest < ActiveSupport::TestCase
       jane.generate_token
       jane.save
       janes_token = jane.token
-      Account.confirm_by_token(janes_token)
+      jane.confirm_by_token(janes_token)
       jane.reload
       refute jane.token
     end
