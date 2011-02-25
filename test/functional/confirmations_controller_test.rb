@@ -7,7 +7,7 @@ class ConfirmationsControllerTest < ActionController::TestCase
       setup do
         @jane = accounts(:jane)
         @jane.generate_token!
-        get :show, :token => @jane.token
+        get :show, :token => @jane.token, :email => @jane.email
       end
 
       should respond_with(:redirect)
