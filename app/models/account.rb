@@ -8,6 +8,8 @@ class Account < ActiveRecord::Base
   validate :has_at_least_one_category
   validate :has_no_more_than_two_categories
 
+  attr_accessible :first_name, :last_name, :email, :page_url, :category_ids
+
   before_create :generate_token, :send_confirmation_mail
 
   has_and_belongs_to_many :categories
