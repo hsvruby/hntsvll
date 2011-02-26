@@ -5,6 +5,8 @@ gem 'sqlite3'
 
 gem 'formtastic'
 gem 'jquery-rails'
+gem 'paperclip'
+gem 'aws-s3'
 
 # Gems needed only for the test environment
 group :test do
