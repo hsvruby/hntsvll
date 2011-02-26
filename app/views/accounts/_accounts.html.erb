@@ -1,5 +1,11 @@
-<ul>
-  <% @accounts.each do |account| %>
-    <li><%= link_to account.full_name, account.page_url %></li>
+<table>
+  <% @accounts.each_slice(5) do |accounts_slice| %>
+    <tr>
+      <% accounts_slice.each do |account| %>
+        <td>
+          <%= link_to image_tag(account.avatar.url, :alt => account.full_name), account.page_url %>
+        </td>
+      <% end %>
+    </tr>
   <% end %>
-</ul>
+</table>
