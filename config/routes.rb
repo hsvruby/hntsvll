@@ -1,5 +1,9 @@
 Hntsvll::Application.routes.draw do
-  resources :accounts
+  resources :accounts do
+    collection do
+      get :autocomplete
+    end
+  end
 
   resource :confirmation, :only => [:new, :create, :show]
 

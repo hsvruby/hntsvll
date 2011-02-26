@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  respond_to :html, :js
+  respond_to :html, :js, :json
 
   before_filter :set_order_by, :only => :index
 
@@ -27,6 +27,10 @@ class AccountsController < ApplicationController
     end
 
     respond_with @accounts
+  end
+
+  def autocomplete
+    respond_with Account.confirmed.search(params[:term]).map { |a| a.full_name }
   end
 
   private

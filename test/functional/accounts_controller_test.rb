@@ -73,4 +73,15 @@ class AccountsControllerTest < ActionController::TestCase
       assert_equal [accounts(:joe)], assigns(:accounts)
     end
   end
+
+  context "GET #autocomplete" do
+    setup do
+      get :autocomplete, { :term => 'Plumb', :format => :json }
+    end
+
+    should "respond with JSON list of autocomplete suggestions" do
+      autocomplete_items = ActiveSupport::JSON.decode(response.body)
+      assert_equal [accounts(:joe).full_name], autocomplete_items
+    end
+  end
 end
