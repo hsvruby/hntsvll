@@ -6,6 +6,7 @@ jane:
   email: jane@example.com
   page_url: "http://example.com"
   categories: developer, blogger
+  avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 oatmeal:
   first_name: Captain
@@ -14,6 +15,7 @@ oatmeal:
   page_url: "http://example.com/oatmeal"
   categories: blogger
   confirmed_at: 2001-01-01 00:00:01
+  avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 lady:
   first_name: Lady
@@ -22,6 +24,7 @@ lady:
   page_url: "http://example.com/i/like/cupcakes"
   categories: other
   confirmed_at: 2001-01-01 00:00:01
+  avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 joe:
   first_name: Joe
@@ -30,6 +33,7 @@ joe:
   page_url: "http://example.com/joe"
   categories: photographer
   confirmed_at: 2001-01-01 00:00:01
+  avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 harry:
   first_name: Harry
@@ -37,3 +41,4 @@ harry:
   email: hjibber@example.com
   page_url: "http://example.com/jibber"
   categories: designer
+  avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"

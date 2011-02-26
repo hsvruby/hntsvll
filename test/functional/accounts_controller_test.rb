@@ -15,7 +15,16 @@ class AccountsControllerTest < ActionController::TestCase
   context "POST #create" do
     context "valid input" do
       setup do
-        post :create, {:account => {:first_name => 'Joe', :last_name => 'Plumber', :email => 'joe_the_plumber@example.com', :page_url =>"http://example.com", :category_ids => [Category.first.id]}}
+        post :create, {
+               :account => {
+                 :first_name => 'Joe',
+                 :last_name => 'Plumber',
+                 :email => 'joe_the_plumber@example.com',
+                 :page_url =>"http://example.com",
+                 :category_ids => [Category.first.id],
+                 :avatar => fixture_file_upload('/avatars/hooptie.jpg', 'image/jpg', :binary)
+               }
+             }
       end
 
       should respond_with(:success)

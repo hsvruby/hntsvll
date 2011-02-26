@@ -7,8 +7,13 @@ class AccountTest < ActiveSupport::TestCase
   should validate_presence_of(:email)
   should validate_uniqueness_of(:email)
 
-
   should validate_presence_of(:page_url)
+
+  should have_attached_file(:avatar)
+  should validate_attachment_presence(:avatar)
+  should validate_attachment_content_type(:avatar).
+    allowing('image/jpg', 'image/gif', 'image/png').
+    rejecting('text/plain', 'application/octet-stream')
 
   should allow_value("http://google.com").for(:page_url)
   should_not allow_value("ht://catsarecool").for(:page_url)

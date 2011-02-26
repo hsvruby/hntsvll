@@ -5,10 +5,19 @@ class Account < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates :page_url, :presence => true, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
 
+  has_attached_file :avatar,
+                    :styles => { :normal => '200x200' },
+                    :default_style => :normal,
+                    :convert_options => { :all => '-strip' } # remove EXIF data
+  validates_attachment_presence :avatar
+  validates_attachment_content_type :avatar,
+                                    :content_type => /^image\//,
+                                    :message => 'must be an image'
+
   validate :has_at_least_one_category
   validate :has_no_more_than_two_categories
 
-  attr_accessible :first_name, :last_name, :email, :page_url, :category_ids
+  attr_accessible :first_name, :last_name, :email, :page_url, :category_ids, :avatar
 
   before_create :generate_token, :send_confirmation_mail
 
