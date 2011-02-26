@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225043504) do
+ActiveRecord::Schema.define(:version => 20110226035345) do
 
   create_table "accounts", :force => true do |t|
     t.string   "first_name"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20110225043504) do
     t.string   "token"
     t.datetime "token_expires_at"
     t.datetime "confirmed_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "accounts", ["confirmed_at"], :name => "index_accounts_on_confirmed_at"
