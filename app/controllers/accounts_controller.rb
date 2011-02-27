@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
   end
 
   def autocomplete
-    respond_with Account.confirmed.search(params[:term]).map { |a| a.full_name }
+    respond_with Account.confirmed.search(params[:term]).map { |a| a.full_name }.uniq
   end
 
   private
