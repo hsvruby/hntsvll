@@ -20,6 +20,29 @@ class AccountsController < ApplicationController
     end
   end
 
+  def edit
+    @account = Account.find(params[:id])
+    unless session[:token] == @account.token
+      redirect_to root_path, :alert => "There was a problem with your token."
+    end
+  end
+
+  def update
+    @account = Account.find(params[:id])
+
+    unless session[:token] == @account.token
+      redirect_to edit_update_path, :alert => "There was a problem with your token."
+    else
+      respond_to do |format|
+        if @account.update_attributes(params[:account])
+          format.html { redirect_to '/', :notice => "Your account was successfully updated." }
+        else
+          render "edit", :alert => "There was a problem editing your account, please check your token."
+        end
+      end
+    end
+  end
+
   def index
     @accounts = Account.confirmed.order(order_by_expression)
     if params[:search].present?

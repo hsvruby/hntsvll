@@ -84,4 +84,80 @@ class AccountsControllerTest < ActionController::TestCase
       assert_equal [accounts(:joe).full_name], autocomplete_items
     end
   end
+
+  context "GET #edit" do
+    context "with invalid token" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        get :edit, {:id => jane.id}, {:token => "invalid_token"}
+      end
+
+      should redirect_to("/")
+      should set_the_flash.to(/problem/)
+    end
+
+    context "with a valid token" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        get :edit, {:id => jane.id}, {:token => jane.token}
+      end
+      should render_template(:edit)
+    end
+  end
+
+  context "PUT #update" do
+    context "with invalid token" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        put :update, {:id => jane.id}, {:token => "invalid_token"}
+      end
+
+      should redirect_to(:controller => "update", :action => "edit")
+      should set_the_flash.to(/problem/)
+    end
+    context "with valid input" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        put :update, {
+               :id => jane.id,
+               :account => {
+                 :first_name => 'Joe',
+                 :last_name => 'Plumber',
+                 :email => 'joe_the_plumber@example.com',
+                 :page_url =>"http://example.com",
+                 :category_ids => [Category.first.id],
+                 :avatar => fixture_file_upload('/avatars/hooptie.jpg', 'image/jpg', :binary)
+               }
+             }, {:token => jane.token}
+      end
+      should redirect_to("/")
+      should set_the_flash.to(/successfully/)
+    end
+
+    context "with invalid input" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        put :update, {
+               :id => jane.id,
+               :account => {
+                 :first_name => '',
+                 :last_name => 'Plumber',
+                 :email => 'joe_the_plumber@example.com',
+                 :page_url =>"http://example.com",
+                 :category_ids => [Category.first.id],
+                 :avatar => fixture_file_upload('/avatars/hooptie.jpg', 'image/jpg', :binary)
+               }
+             }, {:token => jane.token}
+      end
+
+      should render_template(:edit) # rerender edit template showing errors
+      should assign_to(:account)
+
+    end
+  end
 end
