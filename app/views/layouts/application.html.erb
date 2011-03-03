@@ -8,7 +8,13 @@
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" %>
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" %>
   <%= javascript_include_tag "rails", "application" %>
+  <%= javascript_include_tag "jquery.raptorize.1.0.js", :cache => true %>
   <%= csrf_meta_tag %>
+  <script type="text/javascript">
+       $(window).load(function() {
+            $('body').raptorize({'enterOn':'konami-code'});
+       });
+  </script>
 </head>
 <body>
 
