@@ -160,4 +160,30 @@ class AccountsControllerTest < ActionController::TestCase
 
     end
   end
+
+  context "DELETE #destory" do
+
+    context "with invalid token" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        delete :destroy, {:id => jane.id}, {:token => "an invalid token"}
+      end
+
+      should redirect_to(:controller => "update", :action => "edit")
+      should assign_to(:account)
+    end
+
+    context "with valid token" do
+      setup do
+        jane = accounts(:jane)
+        jane.generate_token!
+        delete :destroy, {:id => jane.id}, {:token => jane.token}
+      end
+
+      should redirect_to("/")
+      should set_the_flash.to(/successfully/)
+    end
+
+  end
 end

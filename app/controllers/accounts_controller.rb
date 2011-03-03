@@ -43,6 +43,22 @@ class AccountsController < ApplicationController
     end
   end
 
+  def destroy
+    @account = Account.find(params[:id])
+
+    unless session[:token] == @account.token
+      redirect_to edit_update_path, :alert => "There was a problem with your token."
+    else
+      respond_to do |format|
+        if @account.destroy
+          format.html { redirect_to '/', :notice => "Your account was successfully destroyed." }
+        else
+          render "edit", :alert => "There was a problem destroying your account, please check your token."
+        end
+      end
+    end
+  end
+
   def index
     @accounts = Account.confirmed.order(order_by_expression)
     if params[:search].present?
