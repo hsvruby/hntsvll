@@ -1,2 +1,9 @@
-$('#accounts_list').html("<%= raw escape_javascript render 'accounts' %>");
+$('#accounts_list').append("<%= raw escape_javascript render 'accounts' %>");
 $('#accounts_list').fadeIn('fast');
+
+if (<%= @accounts.total_pages %> > <%= @accounts.current_page %>) {
+  checkScroll();
+} else {
+  $('p#loading').hide();
+}
+

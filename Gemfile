@@ -7,6 +7,7 @@ gem 'formtastic'
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'aws-s3'
+gem 'will_paginate', "~> 3.0.pre2"
 
 # Gems needed only for the test environment
 group :test do
@@ -16,6 +17,6 @@ group :test do
 end
 
 # Gems needed only for development environment
-group :deveopment do
+group :development do
   gem 'meme_generator'
 end

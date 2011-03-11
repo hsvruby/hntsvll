@@ -25,7 +25,10 @@ class AccountsController < ApplicationController
     if params[:search].present?
       @accounts = @accounts.search(params[:search])
     end
-
+    
+    # Let's paginate the accounts now that we have the group we want
+    @accounts = @accounts.paginate(:page => params[:page], :per_page => Account.per_page)
+    
     respond_with @accounts
   end
 
