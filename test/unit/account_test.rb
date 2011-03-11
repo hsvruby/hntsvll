@@ -84,4 +84,12 @@ class AccountTest < ActiveSupport::TestCase
   should "search for first name or last name when given a term without a space" do
     assert_equal [accounts(:harry), accounts(:jane), accounts(:joe)], Account.search('J').order('first_name')
   end
+
+  should "remove token when editing" do
+    jane = accounts(:jane)
+    jane.generate_token
+    jane.edit_by_token(jane.token)
+    jane.reload
+    refute jane.token
+  end
 end

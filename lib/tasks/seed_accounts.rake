@@ -1,14 +1,13 @@
 require 'meme'
 require 'open-uri'
 require 'tempfile'
-require File.join(File.dirname(__FILE__), '..', '..', 'config', 'environment')
 
 ACCOUNTS_TO_CREATE = 100
 
 namespace :db do
   namespace :seed do
     desc "Seed the database with #{ACCOUNTS_TO_CREATE} accounts"
-    task :accounts do
+    task :accounts => :environment do
       1.upto(ACCOUNTS_TO_CREATE) do |i|
         puts "Creating #{i}/#{ACCOUNTS_TO_CREATE}"
 

@@ -5,6 +5,7 @@ Hntsvll::Application.routes.draw do
     end
   end
 
+  resource :update, :controller => "update", :only => [:new, :create, :edit, :show]
   resource :confirmation, :only => [:new, :create, :show]
 
   root :to => 'accounts#index'

@@ -55,6 +55,10 @@ class Account < ActiveRecord::Base
     AccountConfirmation.confirm_account(self).deliver
   end
 
+  def send_update_mail
+    AccountConfirmation.edit_account(self).deliver
+  end
+
   def confirmed?
     !!self.confirmed_at
   end
@@ -66,6 +70,10 @@ class Account < ActiveRecord::Base
   def confirm_by_token(token)
     (self.token == token) ? confirm! : false
   end
+
+  def edit_by_token(token)
+     (self.token == token) ? remove_token! : false
+   end
 
   private
 
@@ -79,6 +87,10 @@ class Account < ActiveRecord::Base
 
   def confirm!
     self.confirmed_at = Time.now
+    remove_token!
+  end
+
+  def remove_token!
     self.token_expires_at = Time.now + 2.hours
     self.token = nil
     self.save
