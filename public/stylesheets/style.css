@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Graublau Web';
+    src: url('/fonts/GraublauWeb.eot');
+    src: local('☺'), url('/fonts/GraublauWeb.otf') format('opentype');
+}
+@font-face {
+
+    font-family: 'Inconsolata';
+    src: url('/fonts/Inconsolata.eot');
+    src: local('☺'), url('/fonts/Inconsolata.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'HandOfSeanRegular';
+    src: url('/fonts/handsean-webfont.eot');
+    src: url('/fonts/handsean-webfont.eot?iefix') format('eot'),
+         url('/fonts/handsean-webfont.woff') format('woff'),
+         url('/fonts/handsean-webfont.ttf') format('truetype'),
+         url('/fonts/handsean-webfont.svg#webfontt4krxuXz') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  background-image: url('/images/bg.png');
+  font-family: helvetica, arial, sans-serif;
+}
+
+#container {
+	width: 1000px;
+	margin: 40px auto;
+}
+
+#header_container {
+  width: 1000px;
+  height: 170px;
+	box-shadow: 0px 2px 15px #333;
+  margin-bottom: -30px;
+  border: 2px solid black;
+}
+
+#header {
+  width: 480px;
+  float: left;
+  height: 170px;
+  padding-left: 20px;
+  background-color: #DDD;
+}
+#header h1 {
+  font-size: 108px;
+  line-height: 1px;
+  font-family: 'Graublau Web', helvetica, arial, sans-serif;
+}
+#header h2 {
+  margin-left: 56px;
+  font-size: 28px;
+  line-height: 1px;
+  font-family: 'Inconsolata', helvetica, arial, sans-serif;
+}
+
+.clear {
+  clear:both;
+}
+.searchandsort {
+  width: 470px;
+  height: 140px;
+  float: right;
+  text-align: right;
+  background-color: #DDD;
+  z-index: 20;
+  padding: 15px;
+}
+.ui-menu {
+  z-index: 20 !important;
+}
+.searchandsort form {
+  font-size: 24px;
+  line-height: 2px;
+  opacity:1;
+  filter:alpha(opacity=100);
+  color: #000;
+}
+
+
+ul.gallery {
+  list-style: none;
+  position: relative;
+}
+
+ul.gallery li span.full_name {
+  clear:both;
+  display:block;
+  font-size: 20px;
+  font-family: 'HandOfSeanRegular', Arial, sans-serif;
+  color: black;
+}
+
+ul.gallery li a {
+	float: left;
+	padding: 10px 10px 35px 10px;
+	margin: -5px;
+	background: #eee;
+	border: 1px solid #fff;
+	box-shadow: 0px 2px 15px #333;
+	position: relative;
+  height: 200px;
+  width: 200px;
+  text-align:center;
+  text-decoration: none;
+}
+
+  ul.gallery li a img {
+    border: none;
+  }
+
+  ul.gallery li a.pic-1 {
+		z-index: 1;
+		-webkit-transform: rotate(-10deg);
+ 		-moz-transform: rotate(-10deg);
+	}
+	ul.gallery li a.pic-2 {
+		z-index: 5;
+		-webkit-transform: rotate(-3deg);
+ 		-moz-transform: rotate(-3deg);
+	}
+	ul.gallery li a.pic-3 {
+		z-index: 3;
+		-webkit-transform: rotate(4deg);
+ 		-moz-transform: rotate(4deg);
+	}
+	ul.gallery li a.pic-4 {
+		z-index: 4;
+		-webkit-transform: rotate(14deg);
+ 		-moz-transform: rotate(14deg);
+	}
+	ul.gallery li a.pic-5 {
+		z-index: 2;
+		-webkit-transform: rotate(-12deg);
+ 		-moz-transform: rotate(-12deg);
+	}
+	ul.gallery li a.pic-6 {
+		z-index: 6;
+		-webkit-transform: rotate(5deg);
+ 		-moz-transform: rotate(5deg);
+	}
+	ul.gallery li a.pic-0 {
+		z-index: 7;
+		-webkit-transform: rotate(8deg);
+ 		-moz-transform: rotate(8deg);
+	}
+	ul.gallery li a:hover {
+		z-index: 10;
+		-moz-box-shadow: 3px 5px 15px #333;
+		-webkit-transform: rotate(0deg);
+ 		-moz-transform: rotate(0deg);
+	}
+
+ul.catagories {
+  	border: 1px solid #fff;
+  	box-shadow: 0px 2px 15px #333;
+  	position: relative;
+    height: 200px;
+    width: 200px;
+    text-align:center;
+    text-decoration: none;
+}

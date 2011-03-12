@@ -17,10 +17,17 @@
   </script>
 </head>
 <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-<%= yield %>
-
+  <div id="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div id="header_container">
+    <div id="header">
+      <h1>HNTSVLL</h1>
+      <h2>creative + tech</h2>
+    </div>
+    <%= yield :header_sidebar%>
+  </div>
+    <%= yield %>
+  </div>
 </body>
 </html>

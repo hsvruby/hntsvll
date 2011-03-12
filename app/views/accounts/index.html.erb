@@ -1,26 +1,26 @@
-<h1>Account Listing</h1>
-
-<p>
-  TODO: This page exists only to test backend functionality.  It should be made much prettier.
-</p>
-
-<p>
-  <%= link_to "Add Yourself!", new_account_path %>
-</p>
-
+<%= content_for :header_sidebar do %>
+<div class="searchandsort">
 <%= form_tag accounts_path, :remote => true, :method => 'get', :"data-type" => 'script', :id => 'filter_form' do %>
   <p>
     Sort By:
     <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
-  </p>
 
-  <p>
     Search:
     <%= text_field_tag :search, params[:search], :id => 'search_text_field' %>
   </p>
+  <p><br /></p>
+    <p>
+      <%= link_to raw("Add Yourself &rarr;"), new_account_path %>
+    </p>
+<% end %>
+</div>
 <% end %>
 
+<br class="clear">
 <div id="accounts_list">
-  <%= render 'accounts' %>
+  <ul class="gallery">
+    <%= render @accounts %>
+  </ul>
 </div>
 <p id="loading">Loading more page results...</p>
+<br class="clear">

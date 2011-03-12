@@ -41,7 +41,8 @@
 				"position":"fixed",
 				"bottom": "-700px",
 				"right" : "0",
-				"display" : "block"
+				"display" : "block",
+				"z-index" : "50"
 			})
 
 			// Animating Code

@@ -1,9 +1,11 @@
-$('#accounts_list').append("<%= raw escape_javascript render 'accounts' %>");
+$('#accounts_list>ul.gallery li').each(function(index) {
+    $(this).remove();
+});
 $('#accounts_list').fadeIn('fast');
+$('#accounts_list>ul.gallery').append("<%= raw escape_javascript render @accounts %>");
 
 if (<%= @accounts.total_pages %> > <%= @accounts.current_page %>) {
   checkScroll();
 } else {
   $('p#loading').hide();
 }
-
