@@ -84,6 +84,7 @@ body {
 ul.gallery {
   list-style: none;
   position: relative;
+  margin-left: 30px;
 }
 
 ul.gallery li span.full_name {

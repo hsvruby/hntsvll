@@ -60,7 +60,6 @@ class AccountsController < ApplicationController
   end
 
   def index
-  logger.debug session.inspect
     @accounts = Account.confirmed.order(order_by_expression)
     if params[:search].present? && !params[:search].blank?
       @accounts = @accounts.search(params[:search])

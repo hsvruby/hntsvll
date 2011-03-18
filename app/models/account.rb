@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   cattr_reader :per_page
-  @@per_page = 25
-  
+  @@per_page = 20
+
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
