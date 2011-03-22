@@ -1,6 +1,9 @@
 $(function() {
-
-  $('#order_by_select').change(function() { $('#filter_form').submit(); });
+  $('#order_by_select').change(function() {
+    // Reset the page to one
+    $('#page_hidden_field').val("1");
+    $('#filter_form').submit();
+  });
 
   $('#search_text_field').keyup(function() {
     var search_field = $(this);
@@ -10,6 +13,9 @@ $(function() {
     search_field.data('search_delay', setTimeout(function() {
       if (search_field.data('search_value') != search_field.val()) {
         search_field.data('search_value', search_field.val());
+
+        // Reset the page to one
+        $('#page_hidden_field').val("1");
         $('#filter_form').submit();
       }
     }, 500));

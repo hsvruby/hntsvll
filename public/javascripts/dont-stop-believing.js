@@ -2,8 +2,6 @@
 // Just because I thought that was a good name for this.  Don't fight it.
 // http://www.youtube.com/watch?v=2NQIPVqLMUg
 
-var currentPage = 1;
-
 // We need to check the scroll as soon as the page loads.
 $(function(){
   setInterval('checkScroll();', 250);
@@ -11,8 +9,8 @@ $(function(){
 
 function checkScroll() {
   if (nearBottomOfPage()) {
-    currentPage++;
-     $.get('/accounts.js?page=' + currentPage);
+    $('#page_hidden_field').val(parseInt($('#page_hidden_field').val()) + 1);
+    $('#filter_form').submit();
   }
 }
 
