@@ -1,11 +1,13 @@
 $(function() {
+  // Sort field
   $('#order_by_select').change(function() {
     // Reset the page to one
     $('#page_hidden_field').val("1");
     $('#filter_form').submit();
   });
 
-  $('#search_text_field').keyup(function() {
+  // Search field
+  function fire_search() {
     var search_field = $(this);
 
     // Do not fire a search until the user has settled in the field for 1/2 second
@@ -19,10 +21,13 @@ $(function() {
         $('#filter_form').submit();
       }
     }, 500));
-  });
+  }
+
+  $('#search_text_field').keyup(fire_search);
 
   $('#search_text_field').autocomplete({
     source: '/accounts/autocomplete',
-    minLength: 2
+    minLength: 2,
+    select: fire_search
   });
 });
