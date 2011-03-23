@@ -26,9 +26,13 @@ Otherwise:
 
   rake db:seed
 
-=== Run the server
-  rails server
+=== Create some dummy accounts (optional)
 
+  rake db:seed:accounts
+
+=== Run the server
+
+  rails server
 
 === Hack
 
