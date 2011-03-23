@@ -24,7 +24,8 @@ class Account < ActiveRecord::Base
 
   before_create :generate_token, :send_confirmation_mail
 
-  has_and_belongs_to_many :categories
+  has_many :categorizations
+  has_many :categories, :through => :categorizations
 
   scope :confirmed, where('accounts.confirmed_at IS NOT NULL')
 

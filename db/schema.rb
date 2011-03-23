@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323142411) do
+ActiveRecord::Schema.define(:version => 20110323142800) do
 
   create_table "accounts", :force => true do |t|
     t.string   "first_name"
@@ -40,5 +40,12 @@ ActiveRecord::Schema.define(:version => 20110323142411) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categorizations", :force => true do |t|
+    t.integer "account_id",  :null => false
+    t.integer "category_id", :null => false
+  end
+
+  add_index "categorizations", ["account_id", "category_id"], :name => "index_categorizations_on_account_id_and_category_id", :unique => true
 
 end

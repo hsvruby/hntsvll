@@ -23,7 +23,8 @@ class AccountTest < ActiveSupport::TestCase
     assert_equal "#{jane.first_name} #{jane.last_name}", jane.full_name
   end
 
-  should have_and_belong_to_many(:categories)
+  should have_many :categorizations
+  should have_many(:categories).through(:categorizations)
 
   should "require an account be associated with at least one category" do
     jane = accounts(:jane)
