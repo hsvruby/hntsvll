@@ -31,3 +31,25 @@ $(function() {
     select: fire_search
   });
 });
+
+// history
+if (history && history.pushState) {
+  window.previousData = "";
+
+  $(function() {
+    $('#filter_form').submit(function() {
+      action = $(this).attr('action');
+      data = $('#search_text_field, #order_by_select').serialize();
+
+      // Only change history if data has changed
+      if (data != window.previousData) {
+        history.pushState(null, document.title, action + '?' + data);
+        window.previousData = data;
+      }
+    });
+
+    $(window).bind('popstate', function() {
+      $.getScript(location.href);
+    });
+  });
+}
