@@ -1,9 +1,20 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 developer:
+  id: 1
   name: Developer
 
 designer:
+  id: 2
   name: Designer
 
 blogger:
+  id: 3
   name: Blogger
+
+photographer:
+  id: 4
+  name: Photographer
+
+other:
+  id: 5
+  name: Other

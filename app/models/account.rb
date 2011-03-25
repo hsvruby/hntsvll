@@ -3,10 +3,9 @@ class Account < ActiveRecord::Base
   @@per_page = 20
 
 
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-  validates :email, :presence => true, :uniqueness => true
-  validates :page_url, :presence => true, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
+  validates :first_name, :last_name, :email, :page_url, :presence => true
+  validates :email, :uniqueness => true
+  validates :page_url, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
 
   has_attached_file :avatar,
                     :styles => { :normal => '200x200#' },
@@ -24,7 +23,8 @@ class Account < ActiveRecord::Base
 
   before_create :generate_token, :send_confirmation_mail
 
-  has_and_belongs_to_many :categories
+  has_many :categorizations
+  has_many :categories, :through => :categorizations
 
   scope :confirmed, where('accounts.confirmed_at IS NOT NULL')
 
@@ -72,8 +72,8 @@ class Account < ActiveRecord::Base
   end
 
   def edit_by_token(token)
-     (self.token == token) ? remove_token! : false
-   end
+    (self.token == token) ? remove_token! : false
+  end
 
   private
 

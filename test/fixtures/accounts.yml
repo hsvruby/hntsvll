@@ -1,44 +1,44 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 jane:
+  id: 1
   first_name: Jane
   last_name: Plumber
   email: jane@example.com
   page_url: "http://example.com"
-  categories: developer, blogger
   avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 oatmeal:
+  id: 2
   first_name: Captain
   last_name: Oatmeal
   email: captoatmeal@example.com
   page_url: "http://example.com/oatmeal"
-  categories: blogger
   confirmed_at: 2001-01-01 00:00:01
   avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 lady:
+  id: 3
   first_name: Lady
   last_name: Cupcake
   email: cupcake_lady@example.com
   page_url: "http://example.com/i/like/cupcakes"
-  categories: other
   confirmed_at: 2001-01-01 00:00:01
   avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 joe:
+  id: 4
   first_name: Joe
   last_name: Plumber
   email: joe@example.com
   page_url: "http://example.com/joe"
-  categories: photographer
   confirmed_at: 2001-01-01 00:00:01
   avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
 
 harry:
+  id: 5
   first_name: Harry
   last_name: Jibber
   email: hjibber@example.com
   page_url: "http://example.com/jibber"
-  categories: designer
   avatar_file_name: "<%= Rails.root %>/test/fixtures/avatars/hooptie.jpg"
