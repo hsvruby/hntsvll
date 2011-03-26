@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
   validates :page_url, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
 
   has_attached_file :avatar,
-                    :styles => { :normal => '200x200#' },
+                    :styles => { :normal => '176x176#' },
                     :default_style => :normal,
                     :convert_options => { :all => '-strip' } # remove EXIF data
   validates_attachment_presence :avatar

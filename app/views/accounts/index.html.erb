@@ -10,19 +10,12 @@
     Search:
     <%= text_field_tag :search, params[:search], :id => 'search_text_field' %>
   </p>
-  <p><br /></p>
-    <p>
-      <%= link_to raw("Add Yourself &rarr;"), new_account_path %>
-    </p>
 <% end %>
 </div>
 <% end %>
 
-<br class="clear">
-<div id="accounts_list">
-  <ul class="gallery">
-    <%= render @accounts %>
-  </ul>
-</div>
+<section id="accounts_list">
+  <%= render @accounts %>
+</section>
+
 <p id="loading">Loading more page results...</p>
-<br class="clear">

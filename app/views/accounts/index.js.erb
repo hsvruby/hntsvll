@@ -1,10 +1,7 @@
 $('p#loading').hide();
 
 <% if @accounts.current_page == 1 %>
-$('#accounts_list>ul.gallery li').each(function(index) {
-    $(this).remove();
-});
+  $('#accounts_list').empty();
 <% end %>
 
-$('#accounts_list').fadeIn('fast');
-$('#accounts_list>ul.gallery').append("<%= raw escape_javascript render @accounts %>");
+$('#accounts_list').append("<%= raw escape_javascript render @accounts %>").fadeIn('fast');
