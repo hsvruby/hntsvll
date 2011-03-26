@@ -54,7 +54,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meme_generator (1.8)
+    meme_generator (1.7.1)
       nokogiri (~> 1.4)
     mime-types (1.16)
     nokogiri (1.4.4)
@@ -112,7 +112,7 @@ DEPENDENCIES
   aws-s3 (~> 0.6.2)
   formtastic (~> 1.2.3)
   jquery-rails (~> 0.2.7)
-  meme_generator (~> 1.8)
+  meme_generator (~> 1.7.1)
   paperclip (~> 2.3.8)
   rails (= 3.0.5)
   ruby-debug

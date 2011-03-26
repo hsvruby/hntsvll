@@ -19,5 +19,5 @@ end
 
 # Gems needed only for development environment
 group :development do
-  gem 'meme_generator', '~>1.8'
+  gem 'meme_generator', '~>1.7.1'
 end
