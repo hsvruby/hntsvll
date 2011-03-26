@@ -1,3 +1,9 @@
-<li style="">
-  <%= link_to image_tag(account.avatar.url, :alt => account.full_name) + content_tag(:span, account.full_name, :class => "full_name"), account.page_url, :class => "pic-#{account_counter%7}" %>
-</li>
+<article>
+  <%= image_tag account.avatar.url, :alt => account.full_name %>
+  <p>
+    <%= link_to account.page_url do %>
+      <%= account.full_name %><br />
+      <%= account.categories.map { |c| c.name }.join(', ') %>
+    <% end %>
+  </p>
+</article>
