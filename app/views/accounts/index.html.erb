@@ -2,6 +2,7 @@
 <div class="searchandsort">
 <%= form_tag accounts_path, :remote => true, :method => 'get', :"data-type" => 'script', :id => 'filter_form' do %>
   <%= hidden_field_tag :page, "1", :id => 'page_hidden_field' %>
+  <%= hidden_field_tag :total_page, "#{ @accounts.total_pages }", :id => 'total_page_hidden_field' %>
 
   <p>
     Sort By:
