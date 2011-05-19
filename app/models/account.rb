@@ -37,6 +37,10 @@ class Account < ActiveRecord::Base
     end
   end
 
+  def self.filter(category) 
+    joins(:categories).where(:categories => { :id => category })
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

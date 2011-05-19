@@ -2,6 +2,7 @@ $('p#loading').hide();
 
 <% if @accounts.current_page == 1 %>
   $('#accounts_list').empty();
+  $('#total_page_hidden_field').val(<%= @accounts.total_pages %>);
 <% end %>
 
 $('#accounts_list').append("<%= raw escape_javascript render @accounts %>").fadeIn('fast');
