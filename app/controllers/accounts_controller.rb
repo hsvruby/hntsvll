@@ -61,13 +61,12 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.confirmed.order(order_by_expression)
-    if params[:search].present?
+    if params[:search].present? && !params[:search].blank?
       @accounts = @accounts.search(params[:search])
     end
-    
+
     # Let's paginate the accounts now that we have the group we want
     @accounts = @accounts.paginate(:page => params[:page], :per_page => Account.per_page)
-    
     respond_with @accounts
   end
 
@@ -100,7 +99,7 @@ class AccountsController < ApplicationController
 
       'RANDOM()'
     else
-      session[:order_by]
+      (session[:order_by] == "created_at") ? "created_at DESC" : session[:order_by]
     end
   end
 end

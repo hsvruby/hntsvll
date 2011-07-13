@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   validates :name, :presence => true
 
-  has_and_belongs_to_many :accounts
+  has_many :categorizations
+  has_many :accounts, :through => :categorizations
 end

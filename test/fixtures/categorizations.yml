@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  account_id: 1
+  category_id: 1
+
+two:
+  account_id: 1
+  category_id: 3
+
+three:
+  account_id: 2
+  category_id: 3
+
+four:
+  account_id: 3
+  category_id: 5
+
+five:
+  account_id: 4
+  category_id: 4
+
+six:
+  account_id: 5
+  category_id: 2

@@ -6,7 +6,7 @@
     <%= f.input :last_name %>
     <%= f.input :email %>
     <%= f.input :page_url %>
-    <%= f.input :avatar %>
+    <%= f.input :avatar, :hint => "Avatar will be cropped to 176x176 pixels" %>
   <% end %>
 
   <%= f.input :categories, :as => :check_boxes, :collection => @categories, :required => true %>

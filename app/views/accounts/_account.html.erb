@@ -1,0 +1,9 @@
+<article>
+  <%= image_tag account.avatar.url, :alt => account.full_name %>
+  <p>
+    <%= link_to account.page_url do %>
+      <%= account.full_name %><br />
+      <%= account.categories.map { |c| c.name }.join(', ') %>
+    <% end %>
+  </p>
+</article>
