@@ -2,10 +2,14 @@
 <div class="searchandsort">
 <%= form_tag accounts_path, :remote => true, :method => 'get', :"data-type" => 'script', :id => 'filter_form' do %>
   <%= hidden_field_tag :page, "1", :id => 'page_hidden_field' %>
+  <%= hidden_field_tag :total_page, "#{ @accounts.total_pages }", :id => 'total_page_hidden_field' %>
 
   <p>
     Sort By:
     <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
+
+    Filter By:
+    <%= select_tag :filter_by, options_from_collection_for_select(Category.all, :id, :name), {:id => 'filter_by_select', :include_blank => 'All'}%>
 
     Search:
     <%= text_field_tag :search, params[:search], :id => 'search_text_field' %>
@@ -18,4 +22,6 @@
   <%= render @accounts %>
 </section>
 
-<p id="loading">Loading more page results...</p>
+<% if @accounts.total_pages > 1 %>
+  <p id="loading">Loading more page results...</p>
+<% end %>

@@ -61,6 +61,9 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.confirmed.order(order_by_expression)
+    if params[:filter_by].present? && !params[:filter_by].blank?
+      @accounts = @accounts.filter(params[:filter_by])
+    end
     if params[:search].present? && !params[:search].blank?
       @accounts = @accounts.search(params[:search])
     end

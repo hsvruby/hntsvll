@@ -86,6 +86,10 @@ class AccountTest < ActiveSupport::TestCase
     assert_equal [accounts(:harry), accounts(:jane), accounts(:joe)], Account.search('J').order('first_name')
   end
 
+  should "filter by category when one is provided" do
+    assert_equal [accounts(:jane), accounts(:oatmeal)], Account.filter('3')
+  end
+
   should "remove token when editing" do
     jane = accounts(:jane)
     jane.generate_token
