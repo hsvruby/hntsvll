@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
-gem 'sqlite3'
 
 gem 'formtastic', '~>1.2.3'
 gem 'jquery-rails', '~>0.2.7'
@@ -20,4 +19,5 @@ end
 # Gems needed only for development environment
 group :development do
   gem 'meme_generator', '~>1.7.1'
+  gem 'sqlite3'
 end
