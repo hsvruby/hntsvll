@@ -9,6 +9,8 @@ gem 'aws-s3', '~>0.6.2'
 
 gem 'will_paginate', "~> 3.0.pre2"
 
+gem 'meme_generator', '~>1.7.1'
+
 # Gems needed only for the test environment
 group :test do
   gem 'shoulda', '~>2.11.3'
@@ -17,7 +19,6 @@ group :test do
 end
 
 # Gems needed only for development environment
-group :development do
-  gem 'meme_generator', '~>1.7.1'
+group :development do  
   gem 'sqlite3'
 end
