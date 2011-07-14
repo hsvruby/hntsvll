@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A directory of all the creative developers in Huntsville, Alabama." />
     <link rel="shortcut icon" type="image/ico" href="<%= image_path "favicon.ico" %>" />
-    
+
     <link rel="stylesheet" type="text/css" href="/stylesheets/default.css">
 
     <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/base/jquery-ui.css" %>
@@ -19,43 +19,43 @@
     <%= javascript_include_tag "jquery.raptorize.1.0.js", :cache => true %>
     <%= csrf_meta_tag %>
 
-    <script type="text/javascript">
-         $(window).load(function() {
-              $('body').raptorize({'enterOn':'konami-code'});
-         });
-    </script>
-	</head>
-  
-	<body>
-  
-  	<header>
-    	<hgroup>
-        <h2 class="subtitle">We are...</h2>
-  			<h1 class="title"><%= link_to "Hntsvll", root_path %></h1>
-      </hgroup>
-    
-      <nav>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Random</a></li>
-          <li><a href="#">Search</a></li>
-          <li><%= link_to "Add Yourself", new_account_path %></li>
-        </ul>
-        
-        <%= yield :header_sidebar %>
-      </nav>
-      
-		</header>
-		
-    <%= yield %>
-    
-    <footer>
-    	<details>
-      	<summary></summary>
-      	<p>This project is on <a href="https://github.com/hsvruby/hntsvll" target="_blank">GitHub</a>!</p>
-    	</details>
-    </footer>
-    
-  </body>
+  <script type="text/javascript">
+       $(window).load(function() {
+           $('body').raptorize({'enterOn':'konami-code'});
+
+           // Make some browsers render html5 tags
+           document.createElement("header");
+           document.createElement("hgroup");
+           document.createElement("nav");
+           document.createElement("footer");
+           document.createElement("details");
+           document.createElement("summary");
+       });
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Add Yourself", new_account_path %></li>
+      </ul>
+    </nav>
+    <%= yield :header_sidebar %>
+  </header>
+
+  <hgroup>
+    <h2 class="subtitle">We are...</h2>
+    <h1 class="title"><%= link_to "Hntsvll", root_path %></h1>
+  </hgroup>
+
+  <%= yield %>
+
+  <footer>
+    <details>
+      <summary></summary>
+      <p>This project is on <a href="https://github.com/hsvruby/hntsvll" target="_blank">GitHub</a>!</p>
+    </details>
+  </footer>
+</body>
 </html>
