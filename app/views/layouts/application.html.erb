@@ -25,20 +25,19 @@
 </head>
 <body>
   <header>
-    <hgroup>
-      <h2 class="subtitle">We are...</h2>
-      <h1 class="title"><%= link_to "Hntsvll", root_path %></h1>
-    </hgroup>
-
     <nav>
       <ul>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Add Yourself", new_account_path %></li>
       </ul>
-
-      <%= yield :header_sidebar %>
     </nav>
+    <%= yield :header_sidebar %>
   </header>
+
+  <hgroup>
+    <h2 class="subtitle">We are...</h2>
+    <h1 class="title"><%= link_to "Hntsvll", root_path %></h1>
+  </hgroup>
 
   <%= yield %>
 
