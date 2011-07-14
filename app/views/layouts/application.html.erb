@@ -19,7 +19,15 @@
 
   <script type="text/javascript">
        $(window).load(function() {
-            $('body').raptorize({'enterOn':'konami-code'});
+           $('body').raptorize({'enterOn':'konami-code'});
+
+           // Make some browsers render html5 tags
+           document.createElement("header");
+           document.createElement("hgroup");
+           document.createElement("nav");
+           document.createElement("footer");
+           document.createElement("details");
+           document.createElement("summary");
        });
   </script>
 </head>
