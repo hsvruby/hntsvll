@@ -7,10 +7,12 @@ class Account < ActiveRecord::Base
   validates :email, :uniqueness => true
   validates :page_url, :format => /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
 
-  has_attached_file :avatar,
+  has_attached_file :avatar, {
                     :styles => { :normal => '176x176#' },
                     :default_style => :normal,
                     :convert_options => { :all => '-strip' } # remove EXIF data
+                    }.merge(PAPERCLIP_STORAGE_OPTIONS)
+                    
   validates_attachment_presence :avatar
   validates_attachment_content_type :avatar,
                                     :content_type => /^image\//,
