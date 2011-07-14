@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>HNTSVLL</title>
-  <meta charset="utf-8" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A directory of all the creative developers in Huntsville, Alabama." />
-  <link rel="shortcut icon" type="image/ico" href="<%= image_path "favicon.ico" %>" />
+	<head>
+    <title>HNTSVLL</title>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A directory of all the creative developers in Huntsville, Alabama." />
+    <link rel="shortcut icon" type="image/ico" href="<%= image_path "favicon.ico" %>" />
 
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/base/jquery-ui.css" %>
-  <%= stylesheet_link_tag :all %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/default.css">
 
-  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" %>
-  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" %>
-  <%= javascript_include_tag "rails", "application", "dont-stop-believing" %>
-  <%= javascript_include_tag "jquery.raptorize.1.0.js", :cache => true %>
-  <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/base/jquery-ui.css" %>
+    <%= stylesheet_link_tag :all %>
+
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" %>
+    <%= javascript_include_tag "rails", "application", "dont-stop-believing" %>
+    <%= javascript_include_tag "jquery.raptorize.1.0.js", :cache => true %>
+    <%= csrf_meta_tag %>
 
   <script type="text/javascript">
        $(window).load(function() {
