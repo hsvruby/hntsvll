@@ -31,11 +31,12 @@ class Account < ActiveRecord::Base
   scope :confirmed, where('accounts.confirmed_at IS NOT NULL')
 
   def self.search(term)
+    term = term.downcase
     if term =~ /^(.+) (\S+)$/ # two names
-      where(['first_name LIKE ? AND last_name LIKE ?', "#{$1}%", "#{$2}%"])
+      where(['LOWER(first_name) LIKE ? AND LOWER(last_name) LIKE ?', "#{$1}%", "#{$2}%"])
     else # one name; match on first name OR last name
       like_term = "#{term.rstrip}%"
-      where(['first_name LIKE ? OR last_name LIKE ?', like_term, like_term])
+      where(['LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?', like_term, like_term])
     end
   end
 
