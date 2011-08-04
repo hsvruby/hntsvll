@@ -18,7 +18,7 @@ class AccountConfirmation < ActionMailer::Base
   def host_for_current_env
     case RAILS_ENV
       when 'development' then 'http://localhost:3000'
-      when 'production' then 'http://hntsvll.heroku.com'
+      else 'http://hntsvll.heroku.com'
     end
   end
 end
