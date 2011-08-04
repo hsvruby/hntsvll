@@ -258,12 +258,18 @@ footer {
 /* End Footer */
 
 /* Media Queries */
-@media (max-width:768px) {
-  header,
-  hgroup,
-  section#accounts_list,
-  footer {
-    width: 900px;
+@media (max-width:755px) {
+  nav {
+    float: left;
+    clear: both;
+  }
+  form#filter_form {
+    float: left;
+    clear: both;
+    width: auto;
+  }
+  form#filter_form section.first {
+    margin: 0;
   }
 }
 @media (max-width:550px) {
