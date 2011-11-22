@@ -1,6 +1,6 @@
 $(function() {
   // Sort and Filter fields
-  $('div.searchandsort select').change(function() {
+  $('#filter_by_select').change(function() {
     reset_page();
   });
 
@@ -28,6 +28,11 @@ $(function() {
     minLength: 2,
     select: fire_search
   });
+  
+  function reset_page() {
+    $('#page_hidden_field').val("1");
+    $('#filter_form').submit();
+  }
 });
 
 // history
@@ -51,8 +56,5 @@ if (history && history.pushState) {
     });
   });
 
-  function reset_page() {
-    $('#page_hidden_field').val("1");
-    $('#filter_form').submit();
-  }
+
 }

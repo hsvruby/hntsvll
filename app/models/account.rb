@@ -24,6 +24,7 @@ class Account < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :page_url, :category_ids, :avatar
 
   before_create :generate_token, :send_confirmation_mail
+  after_update :remove_token!
 
   has_many :categorizations
   has_many :categories, :through => :categorizations
