@@ -14,7 +14,7 @@
       <%= select_tag :filter_by, options_from_collection_for_select(Category.all, :id, :name), {:id => 'filter_by_select', :include_blank => 'All'}%>
     </section>
 
-    <section>
+    <section class="first">
       <label for="order_by_select">Sort By:</label>
       <%= select_tag :order_by, options_for_select(AccountsHelper::ORDER_BY_OPTIONS, session[:order_by]), :id => 'order_by_select' %>
     </section>

@@ -9,7 +9,9 @@
     <%= f.input :avatar, :hint => "Avatar will be cropped to 176x176 pixels" %>
   <% end %>
 
-  <%= f.input :categories, :as => :check_boxes, :collection => @categories, :required => true %>
+  <%= f.inputs do %>
+    <%= f.input :categories, :as => :check_boxes, :collection => @categories, :required => true %>
+  <% end %>
 
   <%= f.buttons do %>
     <%= f.commit_button %>

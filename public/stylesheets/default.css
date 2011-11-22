@@ -121,6 +121,7 @@ form#filter_form select {
 form#filter_form label {
   color: #fff;
   font-size: 0.75em;
+  font-style: italic;
 }
 form#filter_form select {
   margin-top: 2px;
@@ -153,7 +154,8 @@ h2.subtitle {
 /* End Header */
 
 /* Main */
-section#accounts_list {
+section#accounts_list,
+section#new_account {
   min-height: 200px;
   padding: 1.5em 1.5em 3em;
 }
@@ -211,18 +213,113 @@ article:hover p a {
 article p a:hover {
   background: none;
 }
+form#new_account {
+  padding: 2em 0;
+}
+form#new_account label {
+  width: 15%;
+  margin-right: 5%;
+}
+form#new_account input {
+  width: 75%;
+}
+form#new_account p.inline-hints {
+  color: #666 !important;
+  margin: 5px 0 0 20%;
+  font-size: 0.75em;
+}
+#account_categories_input ol {
+  margin-left: 20%;
+  padding: 0;
+}
+#account_categories_input ol input {
+  float: left;
+  width: auto;
+}
+#account_categories_input ol label {
+  width: 100%;
+}
+form#new_account fieldset.buttons {
+  padding: 0;
+}
+form#new_account input#account_submit {
+  width: 150px;
+}
+form#new_account input#account_submit:hover {
+  cursor: pointer;
+}
+/* End Main */
+
+/* Footer */
 footer {
   clear: both;
   padding: 0 1.5em;
 }
-/* End Main */
+/* End Footer */
 
 /* Media Queries */
-@media (max-width:768px) {
-  header,
-  hgroup,
-  section#accounts_list,
-  footer {
-    width: 900px;
+@media (max-width:755px) {
+  nav {
+    float: left;
+    clear: both;
+  }
+  form#filter_form {
+    float: left;
+    clear: both;
+    width: auto;
+  }
+  form#filter_form section.first {
+    margin: 0;
+  }
+}
+@media (max-width:550px) {
+  form#new_account label {
+    width: 79.35px;
+    margin-right: 26.45px;
+  }
+  form#new_account input {
+    width: 65%;
+  }
+  form#new_account p.inline-hints {
+    margin: 5px 0 0 105.8px;
+  }
+  #account_categories_input ol {
+    margin-left: 105.8px;
+    padding: 0;
+    width: 210px;
+    min-height: 200px;
+  }
+  #account_categories_input ol li {
+    width: 210px;
+  }
+  #account_categories_input ol input {
+    float: left;
+    width: auto;
+  }
+  #account_categories_input ol label {
+    width: 50%;
+  }
+}
+@media (max-width:450px) {
+  form#new_account input {
+    width: 95%;
+    margin-top: 5px;
+  }
+  form#new_account p.inline-hints {
+    margin: 5px 0 0;
+  }
+  #account_categories_input ol input {
+    float: left;
+    width: auto;
+  }
+  #account_categories_input ol label {
+    width: 100%;
+  }
+  #account_categories_input ol {
+    margin-left: 0;
+    margin-top: 30px;
+  }
+  #account_categories_input ol li input {
+    margin-top: 0;
   }
 }
