@@ -61,7 +61,6 @@ GEM
     paperclip (2.3.8)
       activerecord
       activesupport
-    pg (0.11.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -115,7 +114,6 @@ DEPENDENCIES
   jquery-rails (~> 0.2.7)
   meme_generator (~> 1.7.1)
   paperclip (~> 2.3.8)
-  pg
   rails (= 3.0.5)
   ruby-debug
   ruby-debug19
