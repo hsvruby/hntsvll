@@ -1,10 +1,9 @@
 $(function() {
   // Sort and Filter fields
-  $('#filter_by_select').change(function() {
+  $('#filter_form select').change(function() {
     reset_page();
   });
 
-  
 
   // Search field
   function fire_search() {
