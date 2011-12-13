@@ -1,5 +1,5 @@
 <p>Please enter your email address to edit your account. A validation link will be emailed to you.</p>
-<%= form_tag(update_path(:method => :get)) do %>
+<%= form_tag(update_path) do %>
   <%= text_field_tag :email %><br />
   <%= submit_tag "submit" %>
 <% end %>

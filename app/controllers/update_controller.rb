@@ -6,12 +6,13 @@ class UpdateController < ApplicationController
 
   def create
     account = Account.find_by_email(params[:email])
+    logger.debug(account.inspect)
     if account
       account.generate_token!
       account.send_update_mail
-      redirect_to "/", :notice => "We have sent an email with your validation link inside."
+      redirect_to root_path, :notice => "We have sent an email with your validation link inside."
     else
-      render "edit", :alert => "We couldn't find your email address in the system."
+      redirect_to new_update_path, :error => "We couldn't find your email address in the system."
     end
   end
 
