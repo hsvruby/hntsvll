@@ -18,6 +18,11 @@ Otherwise:
   cd hntsvll
   bundle install
 
+If you run into issues installing the pg gem on OSX
+Try doing a gem install passing the env variable
+  
+  env ARCHFLAGS="-arch x86_64" gem install pg
+
 === Load the database schema
 
   rake db:schema:load
